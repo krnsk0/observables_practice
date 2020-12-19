@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["ES6"],
+    "outDir": "./build",
+    "rootDir": "./src",
+    "removeComments": true,
+    "downlevelIteration": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true
+  }
+}
