@@ -1,19 +1,7 @@
-const { interval, merge, from } = require('rxjs');
-const { map, take } = require('rxjs/operators');
+const { spawn } = require('child_process');
 
-const seconds: number = 3;
+const progress = spawn('./src/progress/progress', ['1000', '20']);
 
-const thousandCounter = interval(1000).pipe(
-  map((n: number) => `${n} seconds`),
-  take(seconds)
-);
-const hundredCounter = interval(100).pipe(
-  map((n: number) => `${n} tenth-seconds`),
-  take(10 * seconds)
-);
-
-merge(thousandCounter, hundredCounter).subscribe({
-  next: (x: number) => console.log(x),
-  error: (err: Error) => console.log(`error: ${err}`),
-  complete: () => console.log(`complete`),
+progress.stdout.on('data', (data: string) => {
+  console.log(data.toString().trim());
 });
