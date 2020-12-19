@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && node build/index.js",
+    "postinstall": "mkdir build",
+    "build-c": "make all",
+    "build-ts": "tsc",
+    "build": "yarn build-c && yarn && build-ts",
     "dev": "tsc-watch --onSuccess \"node build/index.js\""
   },
   "dependencies": {

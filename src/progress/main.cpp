@@ -36,5 +36,5 @@ int main(int argc, char **argv)
     usleep(sleepTimeMs * 1000);
   }
 
-  std::cout << "complete" << std::endl;
+  std::cout << "1" << std::endl;
 }

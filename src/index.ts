@@ -1,7 +1,9 @@
-const { spawn } = require('child_process');
+import { spawn } from 'child_process';
+import { fromEvent } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-const progress = spawn('./src/progress/progress', ['1000', '20']);
+const progress = spawn('./build/progress', ['1000', '20']);
 
-progress.stdout.on('data', (data: string) => {
-  console.log(data.toString().trim());
-});
+fromEvent(progress.stdout, 'data')
+  .pipe(map((data: any) => data.toString().trim()))
+  .subscribe((x) => console.log(x));
