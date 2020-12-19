@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc && node build/index.js",
-    "dev": "tsc-watch --onSuccess \"node src/index.ts\""
+    "dev": "tsc-watch --onSuccess \"node build/index.js\""
   },
   "dependencies": {
     "rxjs": "6.6.3"
