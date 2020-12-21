@@ -2,7 +2,7 @@ import { spawn, ChildProcessWithoutNullStreams } from 'child_process';
 import { fromEvent, Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
-type ObservationCallback = (observable: Observable<string>) => void;
+type ObservationCallback<T> = (observable: Observable<T>) => void;
 
 export class ProcessObserver {
   private _path: string;
@@ -22,7 +22,7 @@ export class ProcessObserver {
     this._process = spawn(this._path, args);
   }
 
-  observe(callback: ObservationCallback): void {
+  observe(callback: ObservationCallback<string>): void {
     this._observable = new Observable((observer) => {
       if (this._process) {
         this._process.stdout.on('data', (data) => {
