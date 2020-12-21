@@ -24,6 +24,7 @@ int main(int argc, char **argv)
 
   int totalProcessTime = atoi(argv[1]);
   int steps = atoi(argv[2]);
+
   int sleepTimeMs = totalProcessTime / steps;
   float progress, rounded;
 

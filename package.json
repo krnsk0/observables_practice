@@ -8,7 +8,7 @@
     "build-c": "make all",
     "build-ts": "tsc",
     "build": "yarn build-c && yarn && build-ts",
-    "dev": "tsc-watch --onSuccess \"node build/index.js\""
+    "dev": "yarn build-c && tsc-watch --onSuccess \"node build/index.js\""
   },
   "dependencies": {
     "rxjs": "6.6.3"
