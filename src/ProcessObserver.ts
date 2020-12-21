@@ -23,12 +23,17 @@ export class ProcessObserver {
   }
 
   observe(callback: ObservationCallback): void {
+    this._observable = new Observable((observer) => {
+      if (this._process) {
+        this._process.stdout.on('data', (data) => {
+          observer.next(data.toString().trim());
+        });
+        this._process.stdout.on('close', () => {
+          observer.complete();
+        });
+      }
+    });
     if (this._process) {
-      this._observable = fromEvent(this._process.stdout, 'data').pipe(
-        map((data: any) => data.toString().trim()), // no any here
-        takeUntil(fromEvent(this._process, 'close'))
-      );
-
       callback(this._observable);
     }
   }
